@@ -11,6 +11,7 @@ public class TesteExcluir {
 		System.out.println("Teste excluir");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			//Teste do git	
 		}
 
 	}
