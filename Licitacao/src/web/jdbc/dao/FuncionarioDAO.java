@@ -15,28 +15,10 @@ public class FuncionarioDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 	
-	
-	
-	public Connection getConnection() {
-		return connection;
-	}
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-	public String getSql() {
-		return sql;
-	}
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-
-
 	public void adicionaFuncionario(Funcionario funcionario) {
 		sql = "insert into funcionario" +
 					 "(nome, cpf, email, celular, telefone, rua, bairro, bloco, numero, cidade, estado, cep, login, senha) "
 					 + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setString(1, funcionario.getNomeFuncionario());
@@ -64,7 +46,6 @@ public class FuncionarioDAO {
 	
 	public void excluirFuncionario(Funcionario funcionario) {
 		sql = "delete from funcionario where id=?";
-
         try {
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
             stmt.setInt(1, funcionario.getIdFuncionario());
@@ -86,8 +67,6 @@ public class FuncionarioDAO {
 				funcionario.setNomeFuncionario(rs.getString("nome"));
 				//funcionario.setCpf(rs.getString("cpf"));
 				//
-				
-				
 			}
 			rs.close();
 			stmt.close();
@@ -97,5 +76,14 @@ public class FuncionarioDAO {
 		}
 	}
 	
+	//metodos getters e setters
+	public Connection getConnection() { return connection; }
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+	public String getSql() { return sql; }
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
 
 }

@@ -10,10 +10,8 @@ public class CPF {
 		
 	}
 	
-	public String getCpf() {
-		return cpf;
-	}
-
+	//metodo getter setter
+	public String getCpf() { return cpf; }
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}

@@ -15,21 +15,6 @@ public class Funcionario {
 		
 	}
 	
-	//metodos getters e setters
-	public Integer getIdFuncionario() { return idFuncionario; }
-	public void setIdFuncionario(Integer idFuncionario) { this.idFuncionario = idFuncionario; }
-	public String getNomeFuncionario() { return nomeFuncionario; }
-	public void setNomeFuncionario(String nome) { this.nomeFuncionario = nome; }
-	public CPF getCpfFuncionario() { return cpfFuncionario; }
-	public void setCpfFuncionario(CPF cpf) { this.cpfFuncionario = cpf; }
-	public Contato getContatoFuncionario() { return contatoFuncionario; }
-	public void setContatoFuncionario(Contato contato) { this.contatoFuncionario = contato; }
-	public Endereco getEnderecoFuncionario() { return enderecoFuncionario; }
-	public void setEnderecoFuncionario(Endereco endereco) { this.enderecoFuncionario = endereco; }
-	public Login getLoginFuncionario() { return loginFuncionario; }
-	public void setLoginFuncionario(Login login) { this.loginFuncionario = login; }
-	
-	
 	public void cadastrarFuncionario(String nome, String cpf, String rua, int numero, int bloco, String bairro,
 									String cidade, String cep, String estado, String login, String senha, String email,
 									String telefone, String celular ) {
@@ -53,7 +38,6 @@ public class Funcionario {
 			
 			FuncionarioDAO fun = new FuncionarioDAO();
 			fun.adicionaFuncionario(cadFunc);
-			
 		}catch (Exception erro){
 			System.out.println(erro.getMessage());
 		}
@@ -69,10 +53,22 @@ public class Funcionario {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 	
-
+	//metodos getters e setters
+		public Integer getIdFuncionario() { return idFuncionario; }
+		public void setIdFuncionario(Integer idFuncionario) { this.idFuncionario = idFuncionario; }
+		public String getNomeFuncionario() { return nomeFuncionario; }
+		public void setNomeFuncionario(String nome) { this.nomeFuncionario = nome; }
+		public CPF getCpfFuncionario() { return cpfFuncionario; }
+		public void setCpfFuncionario(CPF cpf) { this.cpfFuncionario = cpf; }
+		public Contato getContatoFuncionario() { return contatoFuncionario; }
+		public void setContatoFuncionario(Contato contato) { this.contatoFuncionario = contato; }
+		public Endereco getEnderecoFuncionario() { return enderecoFuncionario; }
+		public void setEnderecoFuncionario(Endereco endereco) { this.enderecoFuncionario = endereco; }
+		public Login getLoginFuncionario() { return loginFuncionario; }
+		public void setLoginFuncionario(Login login) { this.loginFuncionario = login; }
+		
 	
 
 }

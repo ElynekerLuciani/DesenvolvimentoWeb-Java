@@ -8,5 +8,6 @@ public class Licitacao {
 	private String dataInicio;
 	private String dataTermino;
 	private float precoMedio;
+	private boolean pendente;
 
 }
