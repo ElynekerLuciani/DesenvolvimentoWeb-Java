@@ -8,42 +8,53 @@ public class Funcionario {
 	private CPF cpfFuncionario = new CPF();
 	private Contato contatoFuncionario = new Contato();
 	private Endereco enderecoFuncionario = new Endereco();
-	private Login loginFuncionario = new Login();
+	private Login loginFuncionario = new Login(); 
+	private int nivel = 1; 
+	
+	private FuncionarioDAO dao = FuncionarioDAO.getInstancia();
 	
 	
 	public Funcionario() {
 		
 	}
 	
-	public void cadastrarFuncionario(String nome, String cpf, String rua, int numero, int bloco, String bairro,
-									String cidade, String cep, String estado, String login, String senha, String email,
-									String telefone, String celular ) {
-		
+	public void cadastrarFuncionario(Funcionario funci) {
 		Funcionario cadFunc = new Funcionario();
 		try {
-			cadFunc.setNomeFuncionario(nome);
-			cadFunc.cpfFuncionario.setCpf(cpf);
-			cadFunc.enderecoFuncionario.setRua(rua);
-			cadFunc.enderecoFuncionario.setNumero(numero);
-			cadFunc.enderecoFuncionario.setBloco(bloco);
-			cadFunc.enderecoFuncionario.setBairro(bairro);
-			cadFunc.enderecoFuncionario.setCidade(cidade);
-			cadFunc.enderecoFuncionario.setCep(cep);
-			cadFunc.enderecoFuncionario.setEstado(estado);
-			cadFunc.loginFuncionario.setLogin(login);
-			cadFunc.loginFuncionario.setSenha(senha);
-			cadFunc.contatoFuncionario.setEmail(email);
-			cadFunc.contatoFuncionario.setTelefone(telefone);
-			cadFunc.contatoFuncionario.setCelular(celular);
+			System.out.println("entrou em cadastrar");
+			cadFunc.setNomeFuncionario(funci.getNomeFuncionario());
+			cadFunc.cpfFuncionario.setCpf(funci.getCpfFuncionario().getCpf());
+			cadFunc.enderecoFuncionario.setRua(funci.getEnderecoFuncionario().getRua());
+			cadFunc.enderecoFuncionario.setNumero(funci.getEnderecoFuncionario().getNumero());
+			cadFunc.enderecoFuncionario.setBairro(funci.getEnderecoFuncionario().getBairro());
+			cadFunc.enderecoFuncionario.setBloco(funci.getEnderecoFuncionario().getBloco());
+			cadFunc.enderecoFuncionario.setCidade(funci.getEnderecoFuncionario().getCidade());
+			cadFunc.enderecoFuncionario.setEstado(funci.getEnderecoFuncionario().getEstado());
+			cadFunc.enderecoFuncionario.setCep(funci.getEnderecoFuncionario().getCep());
+			cadFunc.contatoFuncionario.setEmail(funci.getContatoFuncionario().getEmail());
+			cadFunc.contatoFuncionario.setTelefone(funci.getContatoFuncionario().getTelefone());
+			cadFunc.contatoFuncionario.setCelular(funci.getContatoFuncionario().getCelular());
+			cadFunc.loginFuncionario.setLogin(funci.getLoginFuncionario().getLogin());
+			cadFunc.loginFuncionario.setSenha(funci.getLoginFuncionario().getSenha());
 			
-			FuncionarioDAO fun = new FuncionarioDAO();
-			fun.adicionaFuncionario(cadFunc);
+			System.out.println("aqui");
+			
+			
+			System.out.println("cadastrar: passou por fundionario dao");
+			dao.adicionaFuncionario(cadFunc);
+			System.out.println("Funcionario: passou");
+			
+			
+			
+			
 		}catch (Exception erro){
-			System.out.println(erro.getMessage());
+			System.out.println(erro.getStackTrace() + "erro em funcionario");
 		}
+		
+		
 	}
 	
-	public void excluirFuncionario(int idFunc) {
+	/*public void excluirFuncionario(int idFunc) {
 		try {
 			Funcionario funcionario = new Funcionario();
 			funcionario.setIdFuncionario(idFunc);
@@ -53,7 +64,7 @@ public class Funcionario {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
+	}*/
 	
 	//metodos getters e setters
 		public Integer getIdFuncionario() { return idFuncionario; }

@@ -3,7 +3,7 @@ package web.jdbc.testes;
 import web.jdbc.model.Funcionario;
 
 public class TesteExcluir {
-
+/*
 	public static void main(String[] args) {
 		try {
 		Funcionario funcionario = new Funcionario();
@@ -16,5 +16,5 @@ public class TesteExcluir {
 		}
 
 	}
-
+*/
 }

@@ -54,7 +54,7 @@ public class Fornecedor {
 		this.categoria = categoria;
 	}
 
-	public void cadastrarFornecedor(String nome, String cnpj, String rua, int numero, int bloco, String bairro,
+	public void cadastrarFornecedor(String nome, String cnpj, String rua, int numero, String bloco, String bairro,
 								    String cidade, String cep, String estado, String login, String senha, 
 								    String email, String telefone, String celular, String categoria) {
 		
@@ -76,6 +76,10 @@ public class Fornecedor {
 		cad.getLogin().setSenha(senha);
 		cad.getCategoria().setNomeCategoria(categoria);
 		
+		
+	}
+	
+	public void validar(String login) {
 		
 	}
 

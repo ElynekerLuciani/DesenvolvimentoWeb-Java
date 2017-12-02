@@ -3,7 +3,7 @@ package web.jdbc.model;
 public class Endereco {
 	private String rua;
 	private int numero;
-	private int bloco;
+	private String bloco;
 	private String bairro;
 	private String cidade;
 	private String cep;
@@ -22,8 +22,8 @@ public class Endereco {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public int getBloco() { return bloco; }
-	public void setBloco(int bloco) {
+	public String getBloco() { return bloco; }
+	public void setBloco(String bloco) {
 		this.bloco = bloco;
 	}
 	public String getBairro() { return bairro; }

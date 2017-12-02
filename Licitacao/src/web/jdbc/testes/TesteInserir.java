@@ -14,7 +14,7 @@ public class TesteInserir {
 		/*
 		Funcionario novo = new Funcionario();
 		novo.cadastrarFuncionario("elyneker", "00911111111", "rua da vida", 5, 3, "Cento", "Perdida", "61222000",
-				"Ceara", "lyneker", "124", "elyneker@eu.com", "34321111", "991122929");*/
+				"Ceara", "lyneker", "124", "elyneker@eu.com", "34321111", "991122929");
 		try {
 		funcionario.cadastrarFuncionario("Henrique", "2222222", "Da vida",
 										22, 2, "centro", "Tabuleiro", "62999000", 
@@ -24,7 +24,7 @@ public class TesteInserir {
 		System.out.println("Gravado!");
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
 	}
 
 }

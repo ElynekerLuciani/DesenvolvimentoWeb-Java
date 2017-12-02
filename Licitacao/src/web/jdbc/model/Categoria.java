@@ -8,6 +8,15 @@ public class Categoria {
 		
 	}
 
+	public void removerCategoria(int idCategoria) {
+		
+	}
+	
+	public void editarCategoria(int idCategoria) {
+		
+	}
+	
+	// metodos getters e setters
 	public int getIdCategoria() { return idCategoria; }
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
@@ -27,13 +36,7 @@ public class Categoria {
 		
 	}
 	
-	public void removerCategoria(int idCategoria) {
-		
-	}
 	
-	public void editarCategoria(int idCategoria) {
-		
-	}
 	
 	
 
