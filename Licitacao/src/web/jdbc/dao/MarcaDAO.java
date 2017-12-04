@@ -17,7 +17,7 @@ public class MarcaDAO {
 	protected MarcaDAO() {
 		
 	}
-	
+	//teste
 	public static MarcaDAO getInstancia() {
 		if(instancia == null) {
 			instancia = new MarcaDAO();
