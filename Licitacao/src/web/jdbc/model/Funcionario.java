@@ -44,8 +44,20 @@ public class Funcionario {
 			dao.adicionaFuncionario(cadFunc);
 			System.out.println("Funcionario: passou");
 			
+			//retorna o id do usuario
+			Funcionario fresult = new Funcionario();
+			System.out.println("Erro não é akiS");
+			FuncionarioDAO fun = FuncionarioDAO.getInstancia();
+			fresult = fun.retornarId(cadFunc);
+			System.out.println("resultado " + fresult.getIdFuncionario());
 			
 			
+			//esse trecho de codigo insere na tabela com todos os outros logins
+			Validacao validarNovo = new Validacao();
+			validarNovo.setLogin(cadFunc.getLoginFuncionario().getLogin());
+			validarNovo.setNivel(nivel);
+			validarNovo.setIdCliente(fresult.getIdFuncionario());
+			validarNovo.inserirAcesso(validarNovo);
 			
 		}catch (Exception erro){
 			System.out.println(erro.getStackTrace() + "erro em funcionario");

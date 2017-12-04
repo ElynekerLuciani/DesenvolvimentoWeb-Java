@@ -1,37 +1,70 @@
 package web.jdbc.model;
 
+import web.jdbc.dao.FornecedorDAO;
+
 public class Fornecedor {
 	private int idFornecedor;
-	private String nome;
+	private String nomeFornecedor;
 	private Endereco endFornecedor = new Endereco();
 	private Contato contatoFornecedor = new Contato();
-	private CNPJ cnpj = new CNPJ();
-	private Login login = new Login();
-	private Boolean aprovado = true;
-	private float nota;
-	private Categoria categoria = new Categoria();
+	private CNPJ cnpjFornecedor = new CNPJ();
+	private Login loginFornecedor = new Login();
+	private Boolean aprovadoFornecedor;
+	private float notaFornecedor;
+	private Categoria categoriaFornecedor = new Categoria();
+	private int nivel = 2;
+	
+	private FornecedorDAO fornecDAO = FornecedorDAO.getInstancia();
 	
 	public Fornecedor() {
 		
 	}
 
-	//metodos getters e setters
+	public void cadastrarFornecedor(Fornecedor fornecedor) {
+		Fornecedor cadForn = new Fornecedor();
+		try {
+			cadForn.setNomeFornecedor(fornecedor.getNomeFornecedor());
+			cadForn.cnpjFornecedor.setCnpj(fornecedor.getCnpjFornecedor().getCnpj());
+			cadForn.contatoFornecedor.setEmail(fornecedor.getContatoFornecedor().getEmail());
+			cadForn.contatoFornecedor.setTelefone(fornecedor.getContatoFornecedor().getTelefone());
+			cadForn.contatoFornecedor.setCelular(fornecedor.getContatoFornecedor().getCelular());
+			cadForn.endFornecedor.setRua(fornecedor.getEndFornecedor().getRua());
+			cadForn.endFornecedor.setNumero(fornecedor.getEndFornecedor().getNumero());
+			cadForn.endFornecedor.setBairro(fornecedor.getEndFornecedor().getBairro());
+			cadForn.endFornecedor.setBloco(fornecedor.getEndFornecedor().getBloco());
+			cadForn.endFornecedor.setCidade(fornecedor.getEndFornecedor().getCidade());
+			cadForn.endFornecedor.setEstado(fornecedor.getEndFornecedor().getEstado());
+			cadForn.endFornecedor.setCep(fornecedor.getEndFornecedor().getCep());
+			cadForn.loginFornecedor.setLogin(fornecedor.getLoginFornecedor().getLogin());
+			cadForn.loginFornecedor.setLogin(fornecedor.getLoginFornecedor().getSenha());
+			cadForn.setAprovadoFornecedor(fornecedor.getAprovadoFornecedor());
+			cadForn.setNotaFornecedor(fornecedor.getNotaFornecedor());
+			cadForn.categoriaFornecedor.setIdCategoria(fornecedor.getCategoriaFornecedor().getIdCategoria());
+			
+			fornecDAO.adicionaFornecedor(cadForn);
+			
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace() + " Erro em fornecedor");
+		}
+		
+	}
 	
+	public void validar(String login) {
+		
+		
+	}
+	
+	
+	
+	
+	//metodos getters e setters
 	public int getIdFornecedor() { return idFornecedor; }
 	public void setIdFornecedor(int idFornecedor) {
 		this.idFornecedor = idFornecedor;
 	}
-	public String getNome() { return nome; }
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public CNPJ getCnpj() { return cnpj; }
-	public void setCnpj(CNPJ cnpj) {
-		this.cnpj = cnpj;
-	}
-	public Login getLogin() { return login; }
-	public void setLogin(Login login) {
-		this.login = login;
+	public String getNomeFornecedor() { return nomeFornecedor; }
+	public void setNomeFornecedor(String nomeFornecedor) {
+		this.nomeFornecedor = nomeFornecedor;
 	}
 	public Endereco getEndFornecedor() { return endFornecedor; }
 	public void setEndFornecedor(Endereco endFornecedor) {
@@ -41,46 +74,29 @@ public class Fornecedor {
 	public void setContatoFornecedor(Contato contatoFornecedor) {
 		this.contatoFornecedor = contatoFornecedor;
 	}
-	public Boolean getAprovado() { return aprovado; }
-	public void setAprovado(Boolean aprovado) {
-		this.aprovado = aprovado;
+	public CNPJ getCnpjFornecedor() { return cnpjFornecedor; }
+	public void setCnpjFornecedor(CNPJ cnpjFornecedor) {
+		this.cnpjFornecedor = cnpjFornecedor;
 	}
-	public float getNota() { return nota; }
-	public void setNota(float nota) {
-		this.nota = nota;
+	public Login getLoginFornecedor() { return loginFornecedor; }
+	public void setLoginFornecedor(Login loginFornecedor) {
+		this.loginFornecedor = loginFornecedor;
 	}
-	public Categoria getCategoria() { return categoria; }
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public Boolean getAprovadoFornecedor() { return aprovadoFornecedor; }
+	public void setAprovadoFornecedor(Boolean aprovadoFornecedor) {
+		this.aprovadoFornecedor = aprovadoFornecedor;
 	}
-
-	public void cadastrarFornecedor(String nome, String cnpj, String rua, int numero, String bloco, String bairro,
-								    String cidade, String cep, String estado, String login, String senha, 
-								    String email, String telefone, String celular, String categoria) {
-		
-		Fornecedor cad = new Fornecedor();
-		
-		cad.setNome(nome);
-		cad.getCnpj().setCnpj(cnpj);
-		cad.getEndFornecedor().setRua(rua);
-		cad.getEndFornecedor().setNumero(numero);
-		cad.getEndFornecedor().setBloco(bloco);
-		cad.getEndFornecedor().setBairro(bairro);
-		cad.getEndFornecedor().setCep(cep);
-		cad.getEndFornecedor().setCidade(cidade);
-		cad.getEndFornecedor().setEstado(estado);
-		cad.getContatoFornecedor().setCelular(celular);
-		cad.getContatoFornecedor().setEmail(email);
-		cad.getContatoFornecedor().setTelefone(telefone);
-		cad.getLogin().setLogin(login);
-		cad.getLogin().setSenha(senha);
-		cad.getCategoria().setNomeCategoria(categoria);
-		
-		
+	public float getNotaFornecedor() { return notaFornecedor; }
+	public void setNotaFornecedor(float notaFornecedor) {
+		this.notaFornecedor = notaFornecedor;
+	}
+	public Categoria getCategoriaFornecedor() { return categoriaFornecedor; }
+	public void setCategoriaFornecedor(Categoria categoriaFornecedor) {
+		this.categoriaFornecedor = categoriaFornecedor;
+	}
+	public int getNivel() { return nivel; }
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 	
-	public void validar(String login) {
-		
-	}
-
 }

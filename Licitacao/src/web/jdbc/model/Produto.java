@@ -1,5 +1,7 @@
 package web.jdbc.model;
 
+import web.jdbc.dao.ProdutoDAO;
+
 public class Produto {
 	private int idProduto;
 	private String nomeProduto;
@@ -7,19 +9,30 @@ public class Produto {
 	private int idMarca;
 	private Categoria categoriaProduto = new Categoria();
 	
+	private ProdutoDAO prodDAO = ProdutoDAO.getInstancia();
+	
 	public Produto() {
 		
 	}
 	
-	public Produto(String nomeProd, String descProd, int idMarca, Categoria catProd) {
+	public void cadastrarProduto(Produto cadProd) {
+		Produto novoProduto = new Produto();
 		
-		setNomeProduto(nomeProd);
-		setDescricaoProduto(descProd);
-		setIdMarca(idMarca);
-		setCategoriaProduto(catProd);
+		try {
+			novoProduto.setNomeProduto(cadProd.getNomeProduto());
+			novoProduto.setDescricaoProduto(cadProd.getDescricaoProduto());
+			novoProduto.setIdMarca(cadProd.getIdMarca());
+			novoProduto.setCategoriaProduto(cadProd.getCategoriaProduto());
+			
+			prodDAO.adicionarProduto(novoProduto);
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace() + "Erro em produto.");
+		}
 		
 	}
-
+	
+	
+	//metodos getters e setters
 	public int getIdProduto() { return idProduto; }
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
@@ -41,18 +54,4 @@ public class Produto {
 		this.categoriaProduto = categoriaProduto;
 	}
 	
-	public void cadastrarProduto(Produto cadProd) {
-		Produto novoProduto = new Produto();
-		novoProduto.setNomeProduto(cadProd.getNomeProduto());
-		novoProduto.setDescricaoProduto(cadProd.getDescricaoProduto());
-		novoProduto.setIdMarca(cadProd.getIdMarca());
-		novoProduto.setCategoriaProduto(cadProd.getCategoriaProduto());
-		
-		
-	}
-	
-	
-	
-	
-
 }
