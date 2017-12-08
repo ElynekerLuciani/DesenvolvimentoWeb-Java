@@ -1,8 +1,12 @@
 package web.jdbc.model;
 
+import java.io.Serializable;
+import java.util.Vector;
+
 import web.jdbc.dao.SetorDAO;
 
-public class Setor {
+public class Setor implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int idSetor;
 	private String nomeSetor;
 	private int nivelAcesso;
@@ -24,6 +28,12 @@ public class Setor {
 			System.out.println(e.getStackTrace() + "Erro em criar categoria");
 		}
 	}
+	
+	public Vector <Setor> listarSetores() {
+		return setorDAO.getLista();
+	}
+	
+	
 	
 	
 	//metodos gette e setters
