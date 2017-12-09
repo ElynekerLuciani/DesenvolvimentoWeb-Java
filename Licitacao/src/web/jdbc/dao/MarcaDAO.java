@@ -31,7 +31,7 @@ public class MarcaDAO {
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = con.prepareStatement("SQL DE ADICIONAR MARCA");
+			stmt = con.prepareStatement("INSERT INTO marca (nomeMarca, modeloMarca) VALUES (?, ?)");
 			stmt.setString(1, marca.getNomeMarca());
 			stmt.setString(2, marca.getModelo());
 			

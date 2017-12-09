@@ -7,7 +7,7 @@ public class Produto {
 	private String nomeProduto;
 	private String descricaoProduto;
 	private int idMarca;
-	private Categoria categoriaProduto = new Categoria();
+	private int categoriaProduto;
 	
 	private ProdutoDAO prodDAO = ProdutoDAO.getInstancia();
 	
@@ -17,7 +17,7 @@ public class Produto {
 	
 	public void cadastrarProduto(Produto cadProd) {
 		Produto novoProduto = new Produto();
-		
+		System.out.println("entrou em cadastrar produto");
 		try {
 			novoProduto.setNomeProduto(cadProd.getNomeProduto());
 			novoProduto.setDescricaoProduto(cadProd.getDescricaoProduto());
@@ -26,7 +26,7 @@ public class Produto {
 			
 			prodDAO.adicionarProduto(novoProduto);
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace() + "Erro em produto.");
+			System.out.println(e.getMessage() + "Erro em produto.");
 		}
 		
 	}
@@ -49,9 +49,10 @@ public class Produto {
 	public void setIdMarca(int idMarca) {
 		this.idMarca = idMarca;
 	}
-	public Categoria getCategoriaProduto() { return categoriaProduto; }
-	public void setCategoriaProduto(Categoria categoriaProduto) {
+	public int getCategoriaProduto() { return categoriaProduto; }
+	public void setCategoriaProduto(int categoriaProduto) {
 		this.categoriaProduto = categoriaProduto;
 	}
+	
 	
 }

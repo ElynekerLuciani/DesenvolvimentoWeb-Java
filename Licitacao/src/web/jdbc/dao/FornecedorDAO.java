@@ -2,7 +2,9 @@ package web.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,5 +60,32 @@ public class FornecedorDAO {
 		}finally {
 			ConnectionFactory.closeConnection(con, stmt);
 		}
+	}
+	
+	public Vector<Fornecedor> getLista(){
+		Vector<Fornecedor> fornecidores = new Vector();
+		Connection con = dao.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try{
+			stmt = con.prepareStatement("SELECT * FROM fornecedor" );
+			rs = stmt.executeQuery();
+			while(rs.next()){
+				Fornecedor fornecedo = new Fornecedor();
+				fornecedo.setNomeFornecedor(rs.getString("nomeForn"));
+				fornecedo.setIdFornecedor(rs.getInt("idForn"));
+				fornecedo.setAprovadoFornecedor(rs.getBoolean("aprovado"));
+				fornecedo.getCnpjFornecedor().setCnpj(rs.getString("cnpj"));
+				fornecedo.getCategoriaFornecedor().setIdCategoria(rs.getInt("idCat"));
+				
+				
+				fornecidores.add(fornecedo);
+			}
+		}catch (Exception e) {
+			Logger.getLogger(SetorDAO.class.getName()).log(Level.SEVERE, null, e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return fornecidores;
 	}
 }
