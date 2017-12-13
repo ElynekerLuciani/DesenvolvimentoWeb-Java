@@ -45,6 +45,7 @@ public class Funcionario {
 			System.out.println("Funcionario: passou");
 			
 			//retorna o id do usuario
+			/*
 			Funcionario fresult = new Funcionario();
 			System.out.println("Erro não é akiS");
 			FuncionarioDAO fun = FuncionarioDAO.getInstancia();
@@ -58,7 +59,7 @@ public class Funcionario {
 			validarNovo.setNivel(nivel);
 			validarNovo.setIdCliente(fresult.getIdFuncionario());
 			validarNovo.inserirAcesso(validarNovo);
-			
+			*/
 		}catch (Exception erro){
 			System.out.println(erro.getStackTrace() + "erro em funcionario");
 		}

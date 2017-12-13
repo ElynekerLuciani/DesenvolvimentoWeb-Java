@@ -9,11 +9,11 @@ public class TesteFuncionario {
 		
 		try {
 			Funcionario novo = new Funcionario();
-			novo.setNomeFuncionario("PEDRO");
+			novo.setNomeFuncionario("Elyneker");
 			novo.getContatoFuncionario().setCelular("88999794015");
 			novo.getContatoFuncionario().setEmail("maria@ela.com"); 
 			novo.getContatoFuncionario().setTelefone("8834242053");
-			novo.getCpfFuncionario().setCpf("782.171.118-19");
+			novo.getCpfFuncionario().setCpf("009.111.773-50");
 			novo.getEnderecoFuncionario().setBairro("centro");
 			novo.getEnderecoFuncionario().setBloco("bloco");
 			novo.getEnderecoFuncionario().setCep("62960000");
@@ -22,7 +22,7 @@ public class TesteFuncionario {
 			novo.getEnderecoFuncionario().setNumero(3);
 			novo.getEnderecoFuncionario().setRua("la de casa");
 			novo.getLoginFuncionario().setLogin("teste1");
-			novo.getLoginFuncionario().setSenha( "123");
+			novo.getLoginFuncionario().setSenha( "1234");
 			novo.cadastrarFuncionario(novo);
 			
 			System.out.println("main: passou");

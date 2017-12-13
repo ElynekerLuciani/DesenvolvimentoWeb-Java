@@ -69,6 +69,48 @@ public class CategoriaDAO {
 		
 	}
 	
+	public int fornecedorSizeSetror(int idcat){
+		int quantidade = 0;
+		Connection con = dao.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs =null;
+		try {
+			stmt= con.prepareStatement("SELECT COUNT(*) AS qtd  FROM fornecedor where idcat = "+idcat+";");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				quantidade = rs.getInt("qtd");
+				
+			}
+			
+			
+		} catch(SQLException e) {
+			Logger.getLogger(SetorDAO.class.getName(), null).log(Level.SEVERE, null, e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return quantidade;
+	}
+	
+	public Categoria categoriaPorID(int id){
+		Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+        	Categoria categoria = new Categoria();
+            stmt = con.prepareStatement("SELECT * FROM `categoria` WHERE idCat ="+id);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+            	categoria.setIdCategoria(rs.getInt("idCat"));
+            	categoria.setNomeCategoria(rs.getString("nomeCat"));
+            }
+            return categoria;
+            }catch (Exception e) {
+            	throw new RuntimeException(e);
+			}finally {
+				ConnectionFactory.closeConnection(con, stmt, rs);
+			}
+	}
 	
 	
 	

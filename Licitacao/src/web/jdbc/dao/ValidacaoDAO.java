@@ -5,17 +5,66 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.management.RuntimeErrorException;
+
 import web.jdbc.dao.conexao.ConnectionFactory;
 import web.jdbc.model.Validacao;
 
 public class ValidacaoDAO {
-	private Connection connection;
-	private String sql;
+	//private Connection connection;
+	//private String sql;
+	private ConnectionFactory dao = ConnectionFactory.getInstancia();
+	private static ValidacaoDAO instancia;
 	
+	protected ValidacaoDAO() {
+		
+	}
+	
+	public static ValidacaoDAO getInstancia() {
+		if(instancia == null) {
+			instancia = new ValidacaoDAO();
+		}
+		return instancia;
+	}
+	
+	/*
 	public ValidacaoDAO() throws SQLException {
 		this.connection = new ConnectionFactory().getConnection();
 	}
+	*/ 
 	
+	public boolean acessarSistema(Validacao validar) throws SQLException, ClassNotFoundException {
+		Connection con = dao.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			if(validar.getNivel() == 1) {
+				stmt = con.prepareStatement("SELECT senha FROM funcionario WHERE login = '"+ validar.getLogin() + "'");
+			} else {
+				stmt = con.prepareStatement("SELECT senha FROM fornecedor WHERE login = '"+ validar.getLogin() + "'");
+			}
+			
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				if(validar.getSenha().equals(rs.getString("senha"))) {
+					return true;
+				}
+				
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage() + "erro em acessar sistema funcionario");
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt,rs);
+		}
+		return false;
+	}
+	
+	
+	
+	
+	/*
 	public int validarAcesso(Validacao acesso) {
 		sql = "CONSULTA DE LOGIN NA TABELA VALIDACAO";
 		try {
@@ -48,5 +97,5 @@ public class ValidacaoDAO {
 			System.out.println(e.getMessage() + "Erro em Inserir Acesso");
 		}
 	}
-
+*/
 }
